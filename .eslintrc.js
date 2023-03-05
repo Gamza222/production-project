@@ -3,7 +3,7 @@ module.exports = {
         browser: true,
         es2021: true
     },
-    extends: ['plugin:react/recommended', 'standard-with-typescript'],
+    extends: ['plugin:react/recommended', 'standard-with-typescript', 'plugin:i18next/recommended'],
     overrides: [],
     parserOptions: {
         ecmaVersion: 'latest',
@@ -11,7 +11,7 @@ module.exports = {
         project: 'tsconfig.json'
     },
 
-    plugins: ['react', '@typescript-eslint'],
+    plugins: ['react', '@typescript-eslint', 'i18next'],
     rules: {
         'react/react-in-jsx-scope': 'off',
         'react/jsx-indent': [2, 4],
@@ -35,7 +35,8 @@ module.exports = {
         'no-shadow': 'off',
         '@typescript-eslint/naming-convention': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
-        quotes: [2, 'single', { avoidEscape: true }]
+        quotes: [2, 'single', { avoidEscape: true }],
+        'i18next/no-literal-string': [2, { markupOnly: true }]
     },
     globals: {
         __IS_DEV__: true
