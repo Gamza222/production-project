@@ -4,7 +4,11 @@ module.exports = {
         es2021: true,
         jest: true
     },
-    extends: ['plugin:react/recommended', 'standard-with-typescript', 'plugin:i18next/recommended'],
+    extends: [
+        'plugin:react/recommended',
+        'standard-with-typescript',
+        'plugin:i18next/recommended'
+    ],
     overrides: [],
     parserOptions: {
         ecmaVersion: 'latest',
@@ -36,6 +40,7 @@ module.exports = {
         'no-shadow': 'off',
         '@typescript-eslint/naming-convention': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
+        'max-len': ['error', { ignoreComments: true }],
         quotes: [2, 'single', { avoidEscape: true }],
         'i18next/no-literal-string': [2, { markupOnly: true }]
     },
