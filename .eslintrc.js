@@ -40,7 +40,7 @@ module.exports = {
         'no-shadow': 'off',
         '@typescript-eslint/naming-convention': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
-        'max-len': ['error', { ignoreComments: true }],
+        'max-len': ['error', { ignoreComments: true, code: 120 }],
         quotes: [2, 'single', { avoidEscape: true }],
         'i18next/no-literal-string': [2, { markupOnly: true }]
     },
