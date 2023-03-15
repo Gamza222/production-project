@@ -12,8 +12,8 @@ module.exports = {
     overrides: [],
     parserOptions: {
         ecmaVersion: 'latest',
-        sourceType: 'module',
-        project: 'tsconfig.json'
+        sourceType: 'module'
+
     },
 
     plugins: ['react', '@typescript-eslint', 'i18next'],
