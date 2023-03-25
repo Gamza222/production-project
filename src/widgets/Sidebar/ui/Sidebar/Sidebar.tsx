@@ -23,8 +23,8 @@ const Sidebar = ({ className }: SidebarProps) => {
                 className
             ])}
         >
-            <Button 
-                data-testid="sidebar-toggle" 
+            <Button
+                data-testid="sidebar-toggle"
                 onClick={onToggle}
             >
                 toggle
