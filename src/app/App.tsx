@@ -3,7 +3,7 @@ import { useTheme } from './providers/ThemeProvider'
 import { AppRouter } from './providers/router'
 import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
-import { Suspense, useEffect } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
 const App = () => {
     const { theme } = useTheme()

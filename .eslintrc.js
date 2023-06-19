@@ -6,8 +6,11 @@ module.exports = {
     },
     extends: ['plugin:react/recommended', 'standard-with-typescript', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
     overrides: [{
-        files: ['**/src/**/*.test.{ts, tsx}'],
-        rules: {}
+        files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+        rules: {
+            'i18next/no-literal-string': 'off',
+            'max-len': 'off'
+        }
     }],
     parserOptions: {
         ecmaVersion: 'latest',
@@ -15,7 +18,7 @@ module.exports = {
         project: ['./tsconfig.json']
     },
     parser: '@typescript-eslint/parser',
-    plugins: ['react', '@typescript-eslint', 'i18next'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
     rules: {
         'react/react-in-jsx-scope': 'off',
         'react/jsx-indent': [2, 4],
@@ -43,6 +46,8 @@ module.exports = {
             ignoreComments: true,
             code: 120
         }],
+        'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
         quotes: [2, 'single', {
             avoidEscape: true
         }],

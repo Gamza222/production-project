@@ -3,15 +3,16 @@ import Sidebar from './Sidebar'
 import React from 'react'
 import { withTranslation } from 'react-i18next'
 import { renderWithTranslation } from 'shared/lib/tests/renderWithTranslation/renderWithTranslation'
+import { ComponentRender } from 'shared/lib/tests/ComponentRender/ComponentRender'
 
 describe('Sidebar', () => {
     test('Test Render', () => {
-        renderWithTranslation(<Sidebar />)
+        ComponentRender(<Sidebar />)
         expect(screen.getByTestId('sidebar')).toBeInTheDocument()
     })
 
     test('test toggle', () => {
-        renderWithTranslation(<Sidebar />)
+        ComponentRender(<Sidebar />)
         const toggleBtn = screen.getByTestId('sidebar-toggle')
         expect(screen.getByTestId('sidebar-toggle')).toBeInTheDocument()
         fireEvent.click(toggleBtn)

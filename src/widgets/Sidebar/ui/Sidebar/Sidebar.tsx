@@ -45,7 +45,6 @@ const Sidebar = ({ className }: SidebarProps) => {
                     to={RoutePath.main}
                     theme={AppLinkTheme.SECONDARY}
                     className={cls.item}
-
                 >
                     <MainIcon className={cls.icon}/>
                     <span className={classNames(cls.link)}>
