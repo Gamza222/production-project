@@ -1,5 +1,7 @@
 {
   "Sidebar": "Sidebar",
+  "decrement": "decrement",
+  "increment": "increment",
   "toggle": "toggle",
   "Войти": "Войти",
   "Главная": "Главная",
