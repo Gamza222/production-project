@@ -25,6 +25,7 @@
     "webpack.config.ts",
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "./config/**/*"
-  ],
+    "./config/**/*",
+    "./json-server/**/*"
+, "src/enitities/Counter/model/selectors/getCounter"  ],
 }
