@@ -1,4 +1,3 @@
-import { type DeepPartial } from '@reduxjs/toolkit'
 import { getCounterValue } from './getCounterValue'
 import { type StateSchema } from 'app/providers/StoreProvider'
 

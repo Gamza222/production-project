@@ -1,14 +1,14 @@
 import { Counter } from 'enitities/Counter'
-import React, { useTransition } from 'react'
+import React, { memo, useTransition } from 'react'
 import { useTranslation } from 'react-i18next'
 
-const AboutPage = () => {
+const AboutPage = memo(() => {
     const { t } = useTranslation('about')
     return (
         <div>
             {t('О сайте')}
         </div>
     )
-}
+})
 
 export default AboutPage

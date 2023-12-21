@@ -7,6 +7,11 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 // have a look at the Quick start guide
 // for passing in lng and translations on init
 
+declare module 'i18next' {
+    interface CustomTypeOptions {
+        returnNull: false
+    }
+}
 i18n
 // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
 // learn more: https://github.com/i18next/i18next-http-backend
@@ -18,6 +23,7 @@ i18n
 // pass the i18n instance to react-i18next.
     .use(initReactI18next)
     .init({
+        returnNull: false,
         fallbackLng: 'en',
         debug: __IS_DEV__,
 

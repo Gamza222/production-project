@@ -14,30 +14,19 @@ export default {
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />
 
 export const Primary = Template.bind({})
-Primary.args = {
-    placeholder: 'Type Text',
-    value: '123211'
-}
+Primary.args = {}
 Primary.decorators = [StoreDecorator({
     loginForm: { username: '123', password: '123' }
 })]
 
 export const withError = Template.bind({})
-withError.args = {
-    placeholder: 'Type Text',
-    value: '123211'
-
-}
+withError.args = {}
 withError.decorators = [StoreDecorator({
     loginForm: { username: '123', password: '123', error: 'Please enter' }
 })]
 
 export const Loading = Template.bind({})
-Loading.args = {
-    placeholder: 'Type Text',
-    value: '123211'
-
-}
+Loading.args = {}
 Loading.decorators = [StoreDecorator({
     loginForm: { username: '123', password: '123', isLoading: true }
 })]

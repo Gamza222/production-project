@@ -1,12 +1,16 @@
-import { type ReducersMapObject, configureStore, type DeepPartial } from '@reduxjs/toolkit'
-import { type StateSchema } from './StateSchema'
+import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit'
+import { type ThunkExtrArg, type StateSchema } from './StateSchema'
 import { counterReducer } from 'enitities/Counter'
 import { userReducer } from 'enitities/User'
 import { createReducerManager } from './ReducerManager'
+import { $api } from 'shared/api/api'
+import { type CombinedState, type Reducer } from 'redux'
+import { type NavigateOptions, type To } from 'react-router-dom'
 
 export function createReduxStore (
     initialState?: StateSchema,
-    asyncReducers?: ReducersMapObject<StateSchema>
+    asyncReducers?: ReducersMapObject<StateSchema>,
+    navigate?: (to: To, options?: NavigateOptions) => void
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
@@ -16,10 +20,19 @@ export function createReduxStore (
 
     const ReducerManager = createReducerManager(rootReducers)
 
-    const store = configureStore<StateSchema>({
-        reducer: ReducerManager.reduce,
+    const extraArg: ThunkExtrArg = {
+        api: $api,
+        navigate
+    }
+    const store = configureStore({
+        reducer: ReducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         devTools: __IS_DEV__,
-        preloadedState: initialState
+        preloadedState: initialState,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            thunk: {
+                extraArgument: extraArg
+            }
+        })
     })
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

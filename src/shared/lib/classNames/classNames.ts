@@ -1,13 +1,13 @@
 // function will return classes according to payload watch course 1 module 8 video
 
-type Mods = Record<string, boolean | string> // key - string, value - boolean or string
+export type Mods = Record<string, boolean | string | undefined> // key - string, value - boolean or string
 
 const obj: Mods = {}
 
 export function classNames (
     cls: string,
     mods: Mods = {},
-    additional: string[] = []
+    additional: Array<string | undefined> = []
 ): string {
     return [
         cls,

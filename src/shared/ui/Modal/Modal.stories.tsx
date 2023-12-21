@@ -16,13 +16,13 @@ const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-    isOpen: 'true',
+    isOpen: true,
     children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium velit magnam similique ipsam eligendi, sed magni voluptatibus possimus dolorem quoperferendis asperiores eum ut facere culpa, sapiente aliquid repellat quod!'
 }
 
 export const Dark = Template.bind({})
 Dark.args = {
-    isOpen: 'true',
+    isOpen: true,
     children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium velit magnam similique ipsam eligendi, sed magni voluptatibus possimus dolorem quoperferendis asperiores eum ut facere culpa, sapiente aliquid repellat quod!'
 }
 

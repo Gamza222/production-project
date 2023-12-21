@@ -38,6 +38,7 @@ module.exports = {
         'react/jsx-props-no-spreading': 'warn',
         'react/require-default-props': 'off',
         'react/function-component-definition': 'off',
+        'react/display-name': 'off',
         'no-shadow': 'off',
         '@typescript-eslint/naming-convention': 'off',
         '@typescript-eslint/no-floating-promises': 'off',
@@ -55,9 +56,11 @@ module.exports = {
             markupOnly: true,
             ignoreAttribute: ['data-testid', 'to']
         }],
-        'no-param-reassign': 'off'
+        'no-param-reassign': 'off',
+        'no-undef': 'off'
     },
     globals: {
-        __IS_DEV__: true
+        __IS_DEV__: true,
+        __API__: true
     }
 }
