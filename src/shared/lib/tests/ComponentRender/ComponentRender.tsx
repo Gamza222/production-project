@@ -18,7 +18,6 @@ export function ComponentRender (component: ReactNode, options: ComponentRenderO
 
     return render(
         <MemoryRouter initialEntries={[route]}>
-
             <StoreProvider initialState={initialState}>
                 <I18nextProvider i18n={i18n}>
                     {component}

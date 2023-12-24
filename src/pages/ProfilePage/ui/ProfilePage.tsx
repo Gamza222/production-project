@@ -2,9 +2,18 @@ import React, { memo, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './ProfilePage.module.scss'
 import { useTranslation } from 'react-i18next'
-import { ProfileCard, fetchProfileData, profileReducer } from 'enitities/Profile'
+import {
+    ProfileCard,
+    fetchProfileData,
+    getProfileData,
+    getProfileError,
+    getProfileIsLoading,
+    profileReducer
+} from 'enitities/Profile'
 import DynamicModuleLoader, { type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useSelector } from 'react-redux'
+import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader'
 
 interface ProfilePageProps {
     className?: string
@@ -21,10 +30,19 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
         dispatch(fetchProfileData())
     }, [dispatch])
 
+    const data = useSelector(getProfileData)
+    const isLoading = useSelector(getProfileIsLoading)
+    const error = useSelector(getProfileError)
+
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <div className={classNames(cls.ProfilePage, {}, [className])}>
-                <ProfileCard />
+                <ProfilePageHeader />
+                <ProfileCard
+                    data={data}
+                    isLoading={isLoading}
+                    error={error}
+                />
             </div>
         </DynamicModuleLoader>
     )
