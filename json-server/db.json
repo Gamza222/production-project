@@ -1,29 +1,48 @@
 {
-    "posts": [
-      { "id": "1", "title": "json-server", "author": "typicode" },
-      { "id": "2", "title": "json-server 2", "author": "typicode" },
-      { "id": "3", "title": "json-server 3", "author": "typicode" },
-      { "id": "4", "title": "json-server 4", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "users": [
-        {
-            "id": 1,
-            "username": "admin",
-            "password": "123"
-            
-        }
-    ],
-    "profile": {
-      "first": "Гамза",
-      "lastname": "Рамазанов",
-      "age": "22",
-      "currency": "RUB",
-      "country": "Russia",
-      "city": "Moscow",
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": "2",
+      "title": "json-server 2",
+      "author": "typicode"
+    },
+    {
+      "id": "3",
+      "title": "json-server 3",
+      "author": "typicode"
+    },
+    {
+      "id": "4",
+      "title": "json-server 4",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
       "username": "admin",
-      "avatar": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pxfuel.com%2Fen%2Fdesktop-wallpaper-txupe&psig=AOvVaw0gDEHSJp7AFmzW-K8HOfw8&ust=1699095666536000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKCZ_97Wp4IDFQAAAAAdAAAAABAE" 
-     }
+      "password": "123"
+    }
+  ],
+  "profile": {
+    "first": "Гамзабек",
+    "lastname": "Рамазанов",
+    "age": "22",
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6MmEwXtqp6enS3HgAcqG8XpxCHew-d1pEaZntOvvTIg&s"
+  }
 }

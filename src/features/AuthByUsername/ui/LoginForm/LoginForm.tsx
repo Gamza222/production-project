@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 import React, { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
+
 import cls from './LoginForm.module.scss'
 
 import Input from 'shared/ui/Input/Input'
@@ -32,8 +33,8 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const dispatch = useAppDispatch()
     const username = useSelector(getLoginUsername)
     const password = useSelector(getLoginPassword)
-    const error = useSelector(getLoginError)
     const isLoading = useSelector(getLoginIsLoading)
+    const error = useSelector(getLoginError)
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value))

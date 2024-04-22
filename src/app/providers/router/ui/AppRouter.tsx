@@ -19,7 +19,6 @@ const AppRouter = () => {
                         </Suspense>}
                     path={path}
                 />
-
             ))}
         </Routes>
 

@@ -1,7 +1,8 @@
 /* eslint-disable array-callback-return */
 import path from 'path'
-import { type BuildPaths } from '../build/types/config'
 import type webpack from 'webpack'
+
+import { type BuildPaths } from '../build/types/config'
 import { buildCssLoader } from '../build/loaders/buildCssLoader'
 import { DefinePlugin, type RuleSetRule } from 'webpack'
 
@@ -18,9 +19,9 @@ export default ({ config }: { config: webpack.Configuration }) => {
     // @ts-expect-error
 
     config.module?.rules = config.module?.rules?.map((rule: RuleSetRule) => {
-        if ((rule.test as string).includes('svg')) {
-            return { ...rule, exclude: /\.svg$/i }
-        }
+        // if ((rule.test as string).includes('svg')) {
+        //     return { ...rule, exclude: /\.svg$/i }
+        // }
 
         return rule
     })
