@@ -36,11 +36,11 @@
     }
   ],
   "profile": {
-    "first": "Гамзабек",
-    "lastname": "Рамазанов",
-    "age": "22",
+    "first": "Никита",
+    "lastname": "Ковалев",
+    "age": 27,
     "currency": "RUB",
-    "country": "Russia",
+    "country": "Armenia",
     "city": "Moscow",
     "username": "admin",
     "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6MmEwXtqp6enS3HgAcqG8XpxCHew-d1pEaZntOvvTIg&s"

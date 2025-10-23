@@ -23,8 +23,9 @@ const Modal = (props: ModalProps) => {
     } = props
 
     const [isClosing, setIsClosing] = useState(false)
-    const timeRef = useRef<ReturnType<typeof setTimeout>>() as MutableRefObject<ReturnType<typeof setTimeout>>
     const [isMounted, setIsMounted] = useState(false)
+    const timeRef = useRef<ReturnType<typeof setTimeout>>() as MutableRefObject<ReturnType<typeof setTimeout>>
+
 
     useEffect(() => {
         if (isOpen) {

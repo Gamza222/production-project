@@ -8,6 +8,8 @@ import { useTranslation } from 'react-i18next'
 import Input from 'shared/ui/Input/Input'
 import Loader from 'shared/ui/Loader/Loader'
 import Avatar from 'shared/ui/Avatar/Avatar'
+import { Currency, CurrencySelect } from 'enitities/Currency'
+import { Country, CountrySelect } from 'enitities/Country'
 
 interface ProfileCardProps {
     className?: string
@@ -21,6 +23,8 @@ interface ProfileCardProps {
     onChangeCity?: (value?: string) => void
     onChangeUsername?: (value?: string) => void
     onChangeAvatar?: (value?: string) => void
+    onChangeCurrency?: (currency: Currency) => void
+    onChangeCountry?: (country: Country) => void
 }
 
 const ProfileCard = (props: ProfileCardProps) => {
@@ -35,7 +39,9 @@ const ProfileCard = (props: ProfileCardProps) => {
         onChangeAge,
         onChangeCity,
         onChangeUsername,
-        onChangeAvatar
+        onChangeAvatar,
+        onChangeCurrency,
+        onChangeCountry
     } = props
     const { t } = useTranslation('profile')
 
@@ -67,9 +73,13 @@ const ProfileCard = (props: ProfileCardProps) => {
     return (
         <div className={classNames(cls.ProfileCard, mods, [className])}>
             <div className={cls.data}>
-                <div className={cls.avatarWrapper}>
-                    <Avatar src={data?.avatar} size={100}/>
-                </div>
+                {
+                    data?.avatar && (
+                        <div className={cls.avatarWrapper}>
+                            <Avatar src={data?.avatar} size={100}/>
+                        </div>
+                    )
+                }
                 <Input
                     value={data?.first}
                     placeholder={t('Ваше имя')}
@@ -112,9 +122,21 @@ const ProfileCard = (props: ProfileCardProps) => {
                     onChange={onChangeAvatar}
                     readonly={readonly}
                 />
-            </div>
+                <CurrencySelect 
+                    className={cls.input}
+                    value={data?.currency as Currency} 
+                    onChange={onChangeCurrency}
+                    readonly={readonly}
+                />
+                <CountrySelect
+                    className={cls.input}
+                    value={data?.country}
+                    onChange={onChangeCountry}
+                    readonly={readonly}
+                />
         </div>
-    )
-}
+    </div>
+  );
+};
 
-export default ProfileCard
+export default ProfileCard;

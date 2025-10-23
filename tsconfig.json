@@ -13,13 +13,18 @@
     "baseUrl": ".",
     "paths": {
       "*": ["./src/*"]
-    },
+    }
   },
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
     }
   },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+  ],
   "include": [
     "./config/jest",
     "./config/build",

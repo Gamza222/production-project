@@ -1,4 +1,5 @@
-import { type Country, type Currency } from 'shared/const/common'
+import { Currency } from 'enitities/Currency'
+import { type Country } from 'enitities/Country'
 
 export interface Profile {
     first?: string
