@@ -1,17 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ThunkConfig } from 'app/providers/StoreProvider'
-import { type Profile } from '../../types/profile'
-import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm'
+import { Profile } from 'enitities/Profile'
 
-export const updateProfileData =
+export const fetchProfileData =
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     createAsyncThunk<Profile, void, ThunkConfig<string>>(
-        'profile/updateProfileData',
+        'profile/fetchProfileData',
         async (_, thunkApi) => {
-            const { extra, rejectWithValue, getState } = thunkApi
-            const formData = getProfileForm(getState())
+            const { extra, rejectWithValue } = thunkApi
             try {
-                const response = await extra.api.put<Profile>('/profile', formData)
+                const response = await extra.api.get<Profile>('/profile')
                 return response.data
             } catch (e) {
                 console.log(e)

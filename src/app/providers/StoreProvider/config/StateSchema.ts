@@ -6,7 +6,7 @@
 import { type ReducersMapObject, type EnhancedStore, type AnyAction, type Reducer, type CombinedState } from '@reduxjs/toolkit'
 import { type AxiosInstance } from 'axios'
 import { type CounterSchema } from 'enitities/Counter'
-import { type ProfileSchema } from 'enitities/Profile'
+import { type EditableProfileSchema } from 'features/EditableProfileCard'
 import { type UserScema } from 'enitities/User'
 import { type LoginSchema } from 'features/AuthByUsername'
 import { type NavigateOptions, type To } from 'react-router-dom'
@@ -17,7 +17,7 @@ export interface StateSchema {
 
     // Асихронные редюсеры
     loginForm?: LoginSchema
-    profile?: ProfileSchema
+    profile?: EditableProfileSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

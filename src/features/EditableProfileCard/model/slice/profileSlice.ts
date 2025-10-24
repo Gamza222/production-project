@@ -1,13 +1,13 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { type Profile, type ProfileSchema } from '../types/profile'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
+import { EditableProfileSchema } from '../types/editableProfileSchema'
+import { Profile, ProfileUpdateData } from 'enitities/Profile'
 
-const initialState: ProfileSchema = {
+const initialState: EditableProfileSchema = {
     readonly: true,
     isLoading: false,
     error: undefined,
-    data: undefined
 }
 
 export const profileSlice = createSlice({
@@ -17,7 +17,7 @@ export const profileSlice = createSlice({
         setReadonly: (state, action: PayloadAction<boolean>) => {
             state.readonly = action.payload
         },
-        updateProfile: (state, action: PayloadAction<Profile>) => {
+        updateProfile: (state, action: PayloadAction<ProfileUpdateData>) => {
             state.form = {
                 ...state.form,
                 ...action.payload
@@ -25,7 +25,7 @@ export const profileSlice = createSlice({
         },
         cancelEdit: (state) => {
             state.readonly = true
-            state.form = { ...state.data }
+            state.form = { ...state.data! }
         }
     },
     extraReducers: (builder) => {

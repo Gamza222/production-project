@@ -10,5 +10,59 @@
   "Короткий язык": "En",
   "О сайте": "About",
   "Главная": "Main",
-  "Сохранить": "Save"
+  "Сохранить": "Save",
+  "profile-validation": {
+      "Имя": {
+          "label": "Name",
+          "placeholder": "Enter your name",
+          "required": "Name is required",
+          "maxLength": "Name must be less than 15 characters"
+      },
+      "Фамилия": {
+          "label": "Lastname",
+          "placeholder": "Enter your lastname",
+          "required": "Lastname is required",
+          "maxLength": "Lastname must be less than 15 characters"
+      },
+      "Возраст": {
+          "label": "Age",
+          "placeholder": "Enter your age",
+          "min": "Age must be greater than 0",
+          "max": "Age must be less than 120"
+      },
+      "Город": {
+          "label": "City",
+          "placeholder": "Enter your city",
+          "required": "City is required",
+          "maxLength": "City must be less than 20 characters"
+      },
+      "Имя_пользователя": {
+          "label": "Username",
+          "placeholder": "Enter username",
+          "minLength": "Username must be at least 3 characters",
+          "maxLength": "Username must be less than 15 characters",
+          "invalidChars": "Username can only contain letters, numbers and underscore"
+      },
+      "Аватар": {
+          "label": "Avatar URL",
+          "placeholder": "Enter avatar URL",
+          "url": "Please enter a valid URL"
+      }
+  },
+  "currency": {
+      "label": "Currency",
+      "Укажите валлюту": "Specify currency",
+      "RUB": "Russian Ruble",
+      "EUR": "Euro",
+      "USD": "US Dollar"
+  },
+  "country": {
+      "label": "Country",
+      "Укажите страну": "Specify country",
+      "Russia": "Russia",
+      "Belarus": "Belarus",
+      "Ukraine": "Ukraine",
+      "Kazakhstan": "Kazakhstan",
+      "Armenia": "Armenia"
+  }
 }

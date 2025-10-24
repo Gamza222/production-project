@@ -1,6 +1,6 @@
 import { type Story } from '@storybook/react'
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { profileReducer } from 'enitities/Profile'
+import { profileReducer } from 'features/EditableProfileCard'
 import { loginReducer } from 'features/AuthByUsername/model/slices/loginSlice'
 import { type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 

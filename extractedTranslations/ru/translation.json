@@ -1,6 +1,16 @@
 {
   "PROFILE PAGE": "PROFILE PAGE",
   "Sidebar": "Sidebar",
+  "country": {
+    "Cтрана": "Cтрана",
+    "label": "label",
+    "Укажите страну": "Укажите страну"
+  },
+  "currency": {
+    "label": "label",
+    "Валюта": "Валюта",
+    "Укажите валлюту": "Укажите валлюту"
+  },
   "decrement": "decrement",
   "increment": "increment",
   "toggle": "toggle",

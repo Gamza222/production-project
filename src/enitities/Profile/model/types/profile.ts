@@ -1,21 +1,6 @@
-import { Currency } from 'enitities/Currency'
-import { type Country } from 'enitities/Country'
+import z from 'zod'
+import { createProfileSchema } from 'enitities/Profile/lib/validators/profileSchema/profileSchema'
 
-export interface Profile {
-    first?: string
-    lastname?: string
-    age?: number
-    currency?: Currency
-    country?: Country
-    city?: string
-    username?: string
-    avatar?: string
-}
+export type Profile = z.infer<ReturnType<typeof createProfileSchema>>
 
-export interface ProfileSchema {
-    data?: Profile
-    form?: Profile
-    isLoading?: boolean
-    error?: string
-    readonly: boolean
-}
+export type ProfileUpdateData = Partial<Profile>

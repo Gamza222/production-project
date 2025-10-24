@@ -12,9 +12,9 @@ interface CountrySelectProps {
 }
 
 const options = [
-    {value: Country.Belarus, content: Country.Belarus},
-    {value: Country.Russia, content: Country.Russia},
-    {value: Country.Armenia, content: Country.Armenia}
+    {value: Country.Belarus, content: 'country.Belarus'},
+    {value: Country.Russia, content: 'country.Russia'},
+    {value: Country.Armenia, content: 'country.Armenia'}
 ]
 
 export const CountrySelect = memo((props: CountrySelectProps) => {
@@ -25,14 +25,15 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
         onChange?.(value as Country)
     }, [onChange])
 
-
-    console.log(value)
     return (
         <Select 
             className={classNames('', {}, [className])}
-            label={t('Укажите страну')}
-            options={options}
-            value={value}
+            label={t('country.label')}
+            options={options.map((option) => ({
+                value: option.value,
+                content: t(option.content)
+            }))}
+            value={value?.toString()}
             onChange={onChangeHandler}
             readonly={readonly}
         />
