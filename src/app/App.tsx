@@ -5,7 +5,7 @@ import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
 import { Suspense, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { userActions } from 'enitities/User'
+import { userActions } from 'entities/User'
 
 const App = () => {
     const { theme } = useTheme()

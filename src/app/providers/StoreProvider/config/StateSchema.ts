@@ -5,9 +5,9 @@
 // eslint-disable-next-line max-len
 import { type ReducersMapObject, type EnhancedStore, type AnyAction, type Reducer, type CombinedState } from '@reduxjs/toolkit'
 import { type AxiosInstance } from 'axios'
-import { type CounterSchema } from 'enitities/Counter'
+import { type CounterSchema } from 'entities/Counter'
 import { type EditableProfileSchema } from 'features/EditableProfileCard'
-import { type UserScema } from 'enitities/User'
+import { type UserScema } from 'entities/User'
 import { type LoginSchema } from 'features/AuthByUsername'
 import { type NavigateOptions, type To } from 'react-router-dom'
 

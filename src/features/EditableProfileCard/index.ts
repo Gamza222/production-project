@@ -1,22 +1,15 @@
-import { getProfileData } from './model/selectors/getProfileData/getProfileData'
-import { getProfileIsLoading } from './model/selectors/getProfileIsLoading/getProfileIsLoading'
-import { getProfileError } from './model/selectors/getProfileError/getProfileError'
-import { getProfileReadonly } from './model/selectors/getProfileReadonly/getProfileReadonly'
+// Types
+export type { EditableProfileSchema } from './model/types/editableProfileSchema'
 
-export type {
-    EditableProfileSchema
-} from './model/types/editableProfileSchema'
+// Actions & Reducer
+export { profileActions, profileReducer } from './model/slice/profileSlice'
 
-export {
-    profileActions,
-    profileReducer
-} from './model/slice/profileSlice'
+// Services
+export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData'
+export { updateProfileData } from './model/services/updateProfileData/updateProfileData'
 
-export {
-    fetchProfileData
-} from './model/services/fetchProfileData/fetchProfileData'
-export {
-    updateProfileData
-} from './model/services/updateProfileData/updateProfileData'
-
-export {getProfileData, getProfileIsLoading, getProfileError, getProfileReadonly}
+// Selectors
+export { getProfileData } from './model/selectors/getProfileData/getProfileData'
+export { getProfileIsLoading } from './model/selectors/getProfileIsLoading/getProfileIsLoading'
+export { getProfileError } from './model/selectors/getProfileError/getProfileError'
+export { getProfileReadonly } from './model/selectors/getProfileReadonly/getProfileReadonly'

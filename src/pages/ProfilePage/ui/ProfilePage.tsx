@@ -7,8 +7,8 @@ import DynamicModuleLoader, { type ReducersList } from 'shared/lib/components/Dy
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import ProfilePageHeader from '../../../features/EditableProfileCard/ui/EditableProfileHeader/EditableProfileHeader'
-import { Currency } from 'enitities/Currency'
-import { Country } from 'enitities/Country'
+import { Currency } from 'entities/Currency'
+import { Country } from 'entities/Country'
 import EditableProfileCard from 'features/EditableProfileCard/ui/EditableProfileCard/EditableProfileCard'
 
 interface ProfilePageProps {

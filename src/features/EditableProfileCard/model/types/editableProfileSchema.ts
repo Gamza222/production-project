@@ -1,5 +1,4 @@
-import { Profile, ProfileUpdateData } from "enitities/Profile"
-
+import { type Profile, type ProfileUpdateData } from 'entities/Profile'
 
 export interface EditableProfileSchema {
     data?: Profile

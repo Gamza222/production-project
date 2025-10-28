@@ -1,7 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+
+// App providers
 import { type ThunkConfig } from 'app/providers/StoreProvider'
+
+// Entities
+import { type Profile } from 'entities/Profile'
+
+// Local
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm'
-import { Profile } from 'enitities/Profile'
 
 export const updateProfileData =
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -12,9 +18,11 @@ export const updateProfileData =
             const formData = getProfileForm(getState())
             try {
                 const response = await extra.api.put<Profile>('/profile', formData)
+                if (!response.data) {
+                    throw new Error()
+                }
                 return response.data
             } catch (e) {
-                console.log(e)
                 return rejectWithValue('error')
             }
         }

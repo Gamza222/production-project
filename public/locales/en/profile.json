@@ -10,5 +10,45 @@
     "Имя пользователя": "Username",
     "Введите ссылку на аватар": "Input link to avatar",
     "Произошла ошибка при загрузке профиля": "Error occured during profile loading",
-    "Попробуйте обновить страницу": "Try to refresh page"
+    "Попробуйте обновить страницу": "Try to refresh page",
+    "profile-validation": {
+        "Произошла ошибка при загрузке профиля": "Error loading profile",
+        "Попробуйте обновить страницу": "Try to reload the page",
+          "Имя": {
+              "label": "Name",
+              "placeholder": "Enter your name",
+              "required": "Name is required",
+              "maxLength": "Name must be less than 15 characters"
+          },
+          "Фамилия": {
+              "label": "Lastname",
+              "placeholder": "Enter your lastname",
+              "required": "Lastname is required",
+              "maxLength": "Lastname must be less than 15 characters"
+          },
+          "Возраст": {
+              "label": "Age",
+              "placeholder": "Enter your age",
+              "min": "Age must be greater than 0",
+              "max": "Age must be less than 120"
+          },
+          "Город": {
+              "label": "City",
+              "placeholder": "Enter your city",
+              "required": "City is required",
+              "maxLength": "City must be less than 20 characters"
+          },
+          "Имя_пользователя": {
+              "label": "Username",
+              "placeholder": "Enter username",
+              "minLength": "Username must be at least 3 characters",
+              "maxLength": "Username must be less than 15 characters",
+              "invalidChars": "Username can only contain letters, numbers and underscore"
+          },
+          "Аватар": {
+              "label": "Avatar URL",
+              "placeholder": "Enter avatar URL",
+              "url": "Please enter a valid URL"
+          }
+      }
 }

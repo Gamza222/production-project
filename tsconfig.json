@@ -33,5 +33,5 @@
     "./src/**/*.tsx",
     "./config/**/*",
     "./json-server/**/*"
-, "src/enitities/Counter/model/selectors/getCounter"  ],
+, "src/entities/Counter/model/selectors/getCounter"  ],
 }

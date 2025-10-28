@@ -1,23 +1,44 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { useTranslation } from 'react-i18next'
-import cls from './EditableProfileCard.module.scss'
+// React
+import { memo, useCallback, useEffect, useRef } from 'react'
+
+// React Hook Form
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { createProfileSchema } from 'enitities/Profile/lib/validators/profileSchema/profileSchema'
-import { Profile, ProfileCard, ProfileUpdateData } from 'enitities/Profile'
-import EditableProfileHeader from '../EditableProfileHeader/EditableProfileHeader'
+
+// Redux
+import { useSelector } from 'react-redux'
+
+// i18n
+import { useTranslation } from 'react-i18next'
+
+// Shared utilities
+import { classNames } from 'shared/lib/classNames/classNames'
+
+// Shared components
 import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { profileActions, profileReducer } from '../../model/slice/profileSlice'
-import { useSelector } from 'react-redux'
-import { getProfileForm } from 'features/EditableProfileCard/model/selectors/getProfileForm/getProfileForm'
+
+// Entities
+import { ProfileCard, ProfileUpdateData } from 'entities/Profile'
+import { createProfileSchema } from 'entities/Profile/lib/validators/profileSchema/profileSchema'
+
+// Local components
+import EditableProfileHeader from '../EditableProfileHeader/EditableProfileHeader'
+
+// Local hooks
+import { useProfileFormHandlers } from '../../lib/hooks/useFormChangeHandlers/useFormChangeHandlers'
+
+// Local model
+import { profileReducer } from '../../model/slice/profileSlice'
+import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'
+import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
-import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'
-import { useProfileFormHandlers } from 'features/EditableProfileCard/lib/hooks/useFormChangeHandlers/useFormChangeHandlers'
-import { getProfileData } from 'features/EditableProfileCard/model/selectors/getProfileData/getProfileData'
+import { getProfileData } from '../../model/selectors/getProfileData/getProfileData'
+
+// Styles
+import cls from './EditableProfileCard.module.scss'
 
 interface EditableProfileCardProps {
     className?: string
@@ -31,7 +52,6 @@ const initialReducers: ReducersList = {
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     const { className } = props
     const { t } = useTranslation('profile')
-    const { t: tProfile } = useTranslation()
     const dispatch = useAppDispatch()
     const hasSynced = useRef(false)
 
@@ -42,18 +62,18 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     const readonly = useSelector(getProfileReadonly)
 
     useEffect(() => {
-        dispatch(fetchProfileData())
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData())
+        }
     }, [dispatch])
 
-    const formSchema = createProfileSchema(tProfile)
+    const formSchema = createProfileSchema(t)
     const {
-        register,
         formState: { errors },
         control,
         trigger,
         reset,
         clearErrors,
-        watch
     } = useForm<ProfileUpdateData>({
         resolver: zodResolver(formSchema),
         defaultValues: {},
@@ -73,11 +93,8 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
     const resetFormData = useCallback(() => {
         reset(profileData)
-        console.log('resetting', watch())
-
     }, [reset, formData])
 
-    console.log('errors', errors)
 
     useEffect(() => {
         if (profileData && !isLoading && !hasSynced.current) {
@@ -90,7 +107,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         if(formData && !readonly) {
             trigger()
         }
-    }, [readonly])
+    }, [readonly, t])
 
     
     return (

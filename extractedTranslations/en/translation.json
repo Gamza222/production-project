@@ -13,6 +13,52 @@
   },
   "decrement": "",
   "increment": "",
+  "profile-validation": {
+    "Аватар": {
+      "label": "",
+      "placeholder": "",
+      "url": ""
+    },
+    "Валюта": {
+      "label": "",
+      "placeholder": ""
+    },
+    "Возраст": {
+      "label": "",
+      "max": "",
+      "min": "",
+      "placeholder": ""
+    },
+    "Город": {
+      "label": "",
+      "maxLength": "",
+      "placeholder": "",
+      "required": ""
+    },
+    "Имя": {
+      "label": "",
+      "maxLength": "",
+      "placeholder": "",
+      "required": ""
+    },
+    "Имя_пользователя": {
+      "invalidChars": "",
+      "label": "",
+      "maxLength": "",
+      "minLength": "",
+      "placeholder": ""
+    },
+    "Страна": {
+      "label": "",
+      "placeholder": ""
+    },
+    "Фамилия": {
+      "label": "",
+      "maxLength": "",
+      "placeholder": "",
+      "required": ""
+    }
+  },
   "toggle": "",
   "Ваш возраст": "Ваш возраст",
   "Ваш город": "Ваш город",

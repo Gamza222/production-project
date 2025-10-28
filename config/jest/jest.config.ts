@@ -4,7 +4,8 @@ export default {
 
     globals: {
         __IS_DEV__: true,
-        __API__: ''
+        __API__: '',
+        __PROJECT__: 'jest'
     },
 
     clearMocks: true,
@@ -13,8 +14,8 @@ export default {
         '/node_modules/'
     ],
     moduleDirectories: [
-        'node_modules',
-        'src'
+        'src',
+        'node_modules'
     ],
     moduleFileExtensions: [
         'js',
@@ -33,7 +34,13 @@ export default {
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     moduleNameMapper: {
         '\\.(s?css)$': 'identity-obj-proxy',
-        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx')
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '^entities/(.*)$': '<rootDir>/src/entities/$1',
+        '^features/(.*)$': '<rootDir>/src/features/$1',
+        '^shared/(.*)$': '<rootDir>/src/shared/$1',
+        '^widgets/(.*)$': '<rootDir>/src/widgets/$1',
+        '^app/(.*)$': '<rootDir>/src/app/$1',
+        '^pages/(.*)$': '<rootDir>/src/pages/$1'
     }
 
     // All imported modules in your tests should be mocked automatically

@@ -6,7 +6,7 @@ import Modal from 'shared/ui/Modal/Modal'
 import Button, { ButtonTheme } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserAuthData, userActions } from 'enitities/User'
+import { getUserAuthData, userActions } from 'entities/User'
 
 interface NavbarProps {
     className?: string

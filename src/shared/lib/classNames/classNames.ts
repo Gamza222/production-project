@@ -2,8 +2,6 @@
 
 export type Mods = Record<string, boolean | string | undefined> // key - string, value - boolean or string
 
-const obj: Mods = {}
-
 export function classNames (
     cls: string,
     mods: Mods = {},

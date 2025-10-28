@@ -1,19 +1,33 @@
-import { useCallback, useMemo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import cls from './EditableProfileHeader.module.scss'
-import Text from 'shared/ui/Text/Text'
+// React
+import { useCallback } from 'react'
 
-import Button, { ButtonTheme } from 'shared/ui/Button/Button'
+// React Hook Form
+import { FieldErrors } from 'react-hook-form'
 
-import { useTranslation } from 'react-i18next'
+// Redux
 import { useSelector } from 'react-redux'
 
+// i18n
+import { useTranslation } from 'react-i18next'
+
+// Shared utilities
+import { classNames } from 'shared/lib/classNames/classNames'
+
+// Shared components
+import Text from 'shared/ui/Text/Text'
+import Button, { ButtonTheme } from 'shared/ui/Button/Button'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+
+// Entities
+import { ProfileUpdateData } from 'entities/Profile'
+
+// Local model
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
 import { profileActions } from '../../model/slice/profileSlice'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
-import { FieldErrors } from 'react-hook-form'
-import { Profile, ProfileUpdateData } from 'enitities/Profile'
+
+// Styles
+import cls from './EditableProfileHeader.module.scss'
 
 interface EditableProfileHeaderProps {
     className?: string
@@ -32,18 +46,24 @@ const EditableProfileHeader = (props: EditableProfileHeaderProps) => {
     const isErrors = Object.keys(inputsErrors || {}).length > 0
 
     const onEdit = useCallback(() => {
-        dispatch(profileActions.setReadonly(false))
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(profileActions.setReadonly(false))
+        }
     }, [dispatch])
 
     const onCancelEdit = useCallback(() => {
-        dispatch(profileActions.cancelEdit())
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(profileActions.cancelEdit())
+        }
         clearErrors?.()
         resetFormData?.()
     }, [dispatch, clearErrors, resetFormData])
 
 
     const onSave = useCallback(() => {
-        dispatch(updateProfileData())
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(updateProfileData())
+        }
     }, [dispatch])
 
     return (

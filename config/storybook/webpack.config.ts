@@ -13,18 +13,24 @@ export default ({ config }: { config: webpack.Configuration }) => {
         entry: '',
         src: path.resolve(__dirname, '..', '..', 'src')
     }
-    config.resolve?.modules?.push(paths.src)
+    config.resolve = {
+        ...config.resolve,
+        modules: [paths.src, 'node_modules']
+    }
     config.resolve?.extensions?.push('.ts', '.tsx')
     // eslint-disable-next-line no-param-reassign, @typescript-eslint/ban-ts-comment
     // @ts-expect-error
 
     config.module?.rules = config.module?.rules?.map((rule: RuleSetRule) => {
-        // if ((rule.test as string).includes('svg')) {
-        //     return { ...rule, exclude: /\.svg$/i }
-        // }
-
+        if (rule.test && typeof rule.test === 'object' && 'test' in rule.test) {
+            const ruleTest = rule.test
+            if (ruleTest && (ruleTest.test?.('.svg') || ruleTest.test?.('.jpg') || ruleTest.test?.('.png'))) {
+                return { ...rule, exclude: /\.svg$/i }
+            }
+        }
         return rule
     })
+
     config.module?.rules?.push({
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
@@ -33,7 +39,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config.module?.rules?.push(buildCssLoader(true))
     config.plugins?.push(new DefinePlugin({
         __IS_DEV__: true,
-        __API__: JSON.stringify('')
+        __API__: JSON.stringify(''),
+        __PROJECT__: JSON.stringify('storybook')
     }))
     return config
 }
