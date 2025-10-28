@@ -13,7 +13,7 @@ const MainPage = memo(() => {
     }
     return (
         <div>
-            {t('Главная страница')}
+            {t('Главная страница')}slmslm
         </div>
     )
 })
