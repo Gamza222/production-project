@@ -7,3 +7,5 @@ export const $api = axios.create({
         authorization: localStorage.getItem(USER_LOCALSTORAGE_KEY) || ''
     }
 })
+
+// interceptor will be added later

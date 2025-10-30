@@ -23,7 +23,6 @@ import { getFieldMetadata } from '../../lib/validators/profileSchema/profileSche
 
 // Styles
 import cls from './ProfileCard.module.scss'
-import { memo } from 'react'
 
 interface ProfileCardProps {
     className?: string
@@ -31,8 +30,7 @@ interface ProfileCardProps {
     error?: string
     isLoading?: boolean
     readonly?: boolean
-    control?: Control<ProfileUpdateData>
-    inputsErrors?: FieldErrors<ProfileUpdateData>
+    inputsErrors?: Record<keyof ProfileUpdateData, string>
     onChangeFirstName?: (value?: string) => void
     onChangeLastName?: (value?: string) => void
     onChangeAge?: (value?: string) => void
@@ -43,14 +41,13 @@ interface ProfileCardProps {
     onChangeCountry: (country: Country) => void
 }
 
-const ProfileCard = memo((props: ProfileCardProps) => {
+const ProfileCard = (props: ProfileCardProps) => {
     const {
         className,
         data,
         error,
         isLoading,
         readonly,
-        control,
         inputsErrors,
         onChangeFirstName,
         onChangeLastName,
@@ -100,145 +97,123 @@ const ProfileCard = memo((props: ProfileCardProps) => {
                         </div>
                     )
                 }
-                {inputsErrors?.first?.message && <Text text={inputsErrors.first.message} theme={TextTheme.ERROR} className={cls.errorText} />}
-                <Controller
-                    name="first"
-                    control={control}
-                    render={({ field }) => (
-                        <Input
-                            value={data?.first}
-                            label={t(metadata.first.label)}
-                            className={cls.input}
-                            onChange={(value) => {
-                                onChangeFirstName!(value)
-                                field.onChange(value) 
-                            }}
-                            readonly={readonly}
-                        />
-                    )}
+                 {inputsErrors?.first && (
+                    <Text 
+                        text={inputsErrors.first} 
+                        theme={TextTheme.ERROR} 
+                        className={cls.errorText} 
+                    />
+                )}
+                <Input
+                   value={data?.first}
+                   label={t(metadata.first.label)}
+                   className={cls.input}
+                   onChange={(value) => {
+                       onChangeFirstName!(value)                                
+                   }}
+                   readonly={readonly}
+               />
+                         
+                {inputsErrors?.lastname && (
+                    <Text 
+                        text={inputsErrors.lastname} 
+                        theme={TextTheme.ERROR} 
+                        className={cls.errorText} 
+                    />
+                )}
+                <Input
+                    value={data?.lastname}
+                    label={t(metadata.lastname.label)}
+                    className={cls.input}
+                    onChange={(value) => {onChangeLastName!(value)}}
+                    readonly={readonly}
                 />
-                {inputsErrors?.lastname?.message && <Text text={inputsErrors.lastname.message} theme={TextTheme.ERROR} className={cls.errorText} />}
-                <Controller
-                    name="lastname"
-                    control={control}
-                    render={({ field }) => (
-                        <Input
-                            value={data?.lastname}
-                            label={t(metadata.lastname.label)}
-                            className={cls.input}
-                            onChange={(value) => {
-                                onChangeLastName!(value)
-                                field.onChange(value) 
-                            }}
-                            readonly={readonly}
-                        />
-                    )}
+                {inputsErrors?.age && (
+                    <Text 
+                        text={inputsErrors.age} 
+                        theme={TextTheme.ERROR} 
+                        className={cls.errorText} 
+                    />
+                )}
+                <Input
+                    type="number"
+                    value={data?.age}
+                    label={t(metadata.age.label)}
+                    className={cls.input}
+                    onChange={(value) => {onChangeAge!(value)}}
+                    readonly={readonly}
                 />
-                {inputsErrors?.age?.message && <Text text={inputsErrors.age.message} theme={TextTheme.ERROR} className={cls.errorText} />}
-                <Controller
-                    name="age"
-                    control={control}
-                    render={({ field }) => (
-                        <Input
-                            type="number"
-                            value={data?.age}
-                            label={t(metadata.age.label)}
-                            className={cls.input}
-                            onChange={(value) => {  
-                                onChangeAge!(value)
-                                field.onChange(value) 
-                            }}
-                            readonly={readonly}
-                        />
-                    )}
+                {inputsErrors?.city && (
+                    <Text 
+                        text={inputsErrors.city} 
+                        theme={TextTheme.ERROR} 
+                        className={cls.errorText} 
+                    />
+                )}
+                <Input
+                     value={data?.city}
+                     label={t(metadata.city.label)}
+                     className={cls.input}
+                     onChange={(value) => {onChangeCity!(value)}}
+                     readonly={readonly}
                 />
-                {inputsErrors?.city?.message && <Text text={inputsErrors.city.message} theme={TextTheme.ERROR} className={cls.errorText} />}
-                <Controller
-                    name="city"
-                    control={control}
-                    render={({ field }) => (
-                        <Input
-                            value={data?.city}
-                            label={t(metadata.city.label)}
-                            className={cls.input}
-                            onChange={(value) => {
-                                onChangeCity!(value)
-                                field.onChange(value) 
-                            }}
-                            readonly={readonly}
-                        />
-                    )}
+                {inputsErrors?.username && (
+                    <Text 
+                        text={inputsErrors.username} 
+                        theme={TextTheme.ERROR} 
+                        className={cls.errorText} 
+                    />
+                )}
+                <Input
+                   value={data?.username}
+                   label={t(metadata.username.label)}
+                   className={cls.input}
+                   onChange={(value) => {onChangeUsername!(value)}}
+                   readonly={readonly}
                 />
-                {inputsErrors?.username?.message && <Text text={inputsErrors.username.message} theme={TextTheme.ERROR} className={cls.errorText} />}
-                <Controller
-                    name="username"
-                    control={control}
-                    render={({ field }) => (
-                        <Input
-                            value={data?.username}
-                            label={t(metadata.username.label)}
-                            className={cls.input}
-                            onChange={(value) => {
-                                onChangeUsername!(value)
-                                field.onChange(value) 
-                            }}
-                            readonly={readonly}
-                        />
-                    )}
+                {inputsErrors?.avatar && (
+                    <Text 
+                        text={inputsErrors.avatar} 
+                        theme={TextTheme.ERROR} 
+                        className={cls.errorText} 
+                    />
+                )}
+                 <Input
+                    value={data?.avatar}
+                    label={t(metadata.avatar.label)}
+                    className={cls.input}
+                    onChange={(value) => {onChangeAvatar!(value)}}
+                    readonly={readonly}
                 />
-                {inputsErrors?.avatar?.message && <Text text={inputsErrors.avatar.message} theme={TextTheme.ERROR} className={cls.errorText} />}
-                <Controller
-                    name="avatar"
-                    control={control}
-                    render={({ field }) => (
-                        <Input
-                            value={data?.avatar}
-                            label={t(metadata.avatar.label)}
-                            className={cls.input}
-                            onChange={(value) => {
-                                onChangeAvatar!(value)
-                                field.onChange(value) 
-                            }}
-                            readonly={readonly}
-                        />
-                    )}
+                {inputsErrors?.currency && (
+                    <Text 
+                        text={inputsErrors.currency} 
+                        theme={TextTheme.ERROR} 
+                        className={cls.errorText} 
+                    />
+                )}
+                <CurrencySelect 
+                    className={cls.input}
+                    value={data?.currency}
+                    onChange={(value) => {onChangeCurrency!(value) }}
+                    readonly={readonly}   
                 />
-                {inputsErrors?.currency?.message && <Text text={inputsErrors.currency.message} theme={TextTheme.ERROR} className={cls.errorText} />}
-                <Controller
-                    name="currency"
-                    control={control}
-                    render={({ field }) => (
-                        <CurrencySelect 
-                            className={cls.input}
-                            value={field.value}
-                            onChange={(value) => {
-                                onChangeCurrency!(value) 
-                                field.onChange(value)  
-                            }}
-                            readonly={readonly}
-                        />
-                    )}
-                />
-                                
-                {inputsErrors?.country?.message && <Text text={inputsErrors.country.message} theme={TextTheme.ERROR} className={cls.errorText} />}
-                <Controller
-                    name="country"
-                    control={control}
-                    render={({ field }) => (
-                        <CountrySelect
-                            className={cls.input}
-                            value={field.value}
-                            onChange={(value) => {
-                                onChangeCountry!(value)  
-                                field.onChange(value) 
-                            }}
-                            readonly={readonly}
-                        />
-                    )}
+                {inputsErrors?.country && (
+                    <Text 
+                        text={inputsErrors.country} 
+                        theme={TextTheme.ERROR} 
+                        className={cls.errorText} 
+                    />
+                )}
+                <CountrySelect 
+                    className={cls.input}
+                    value={data?.country}
+                    onChange={(value) => {onChangeCountry!(value)}}
+                    readonly={readonly}
                 />
         </div>
     </div>
   );
-});
+};
 
 export default ProfileCard;

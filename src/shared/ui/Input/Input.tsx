@@ -28,13 +28,9 @@ const Input = memo((props: InputProps) => {
     } = props
 
     const ref = useRef<HTMLInputElement>(null)
-    const [isFocused, setIsFocused] = useState(false)
-
-    const isCaretVisible = isFocused && !readonly
 
     useEffect(() => {
         if (autofocus) {
-            setIsFocused(true)
             ref.current?.focus()
         }
     }, [autofocus])
@@ -44,13 +40,9 @@ const Input = memo((props: InputProps) => {
     }
 
     const onBlur = () => {
-        setIsFocused(false)
     }
     const onFocus = () => {
-        setIsFocused(true)
     }
-
-
 
     const mods: Mods = {
         [cls.readonly]: readonly

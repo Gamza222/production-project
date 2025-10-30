@@ -52,14 +52,14 @@ Loading.args = {
 export const withInputsErrors = Template.bind({})
 withInputsErrors.args = {
     inputsErrors: {
-        first: { type: 'required', message: 'Error' },
-        lastname: { type: 'required', message: 'Error' },
-        age: { type: 'required', message: 'Error' },
-        city: { type: 'required', message: 'Error' },
-        username: { type: 'required', message: 'Error' },
-        avatar: { type: 'required', message: 'Error' },
-        currency: { type: 'required', message: 'Error' },
-        country: { type: 'required', message: 'Error' },
+        first: 'Error',
+        lastname: 'Error',
+        age: 'Error',
+        city: 'Error',
+        username: 'Error',
+        avatar: 'Error',
+        currency: 'Error',
+        country: 'Error',
     }
 }
 

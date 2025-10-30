@@ -1,9 +1,5 @@
 // React
-import { memo, useCallback, useEffect, useRef } from 'react'
-
-// React Hook Form
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { memo, useCallback, useEffect, useMemo, useRef } from 'react'
 
 // Redux
 import { useSelector } from 'react-redux'
@@ -68,17 +64,21 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     }, [dispatch])
 
     const formSchema = createProfileSchema(t)
-    const {
-        formState: { errors },
-        control,
-        trigger,
-        reset,
-        clearErrors,
-    } = useForm<ProfileUpdateData>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {},
-        mode: 'onChange'
-    })
+
+    const errors = useMemo(() => {
+        if (!formData || readonly) return {}
+        const result = formSchema.safeParse(formData)
+        if (result.success) return {}
+        const fieldErrors: Record<string, string> = {}
+        result.error.errors.forEach((err) => {
+            const field = err.path[0]
+            if (field && typeof field === 'string') {
+                fieldErrors[field] = err.message
+            }
+        })
+        
+        return fieldErrors
+    }, [formData, readonly, formSchema])
 
     const { 
         onChangeFirstName, 
@@ -90,32 +90,11 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         onChangeCurrency, 
         onChangeCountry 
     } = useProfileFormHandlers()
-
-    const resetFormData = useCallback(() => {
-        reset(profileData)
-    }, [reset, formData])
-
-
-    useEffect(() => {
-        if (profileData && !isLoading && !hasSynced.current) {
-            resetFormData()
-            hasSynced.current = true
-        }
-    }, [isLoading, hasSynced.current, profileData, resetFormData])
-
-    useEffect(() => {
-        if(formData && !readonly) {
-            trigger()
-        }
-    }, [readonly, t])
-
     
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
         <div className={classNames(cls.EditableProfileCard, {}, [className])}>
             <EditableProfileHeader 
-                clearErrors={clearErrors}
-                resetFormData={resetFormData}
                 inputsErrors={errors}
             />
             <ProfileCard 
@@ -123,7 +102,6 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                 isLoading={isLoading}
                 error={error}
                 readonly={readonly}
-                control={control}
                 inputsErrors={errors}
                 onChangeCurrency={onChangeCurrency} 
                 onChangeCountry={onChangeCountry} 
@@ -140,3 +118,9 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 })
 
 export default EditableProfileCard
+
+
+//for this form i put all values in state immidiately 
+// + track errors immidiately - but its better to track 
+// form with react-hook-forms or so - and put values in state 
+// only on save or page leaving + show errors on save/onblur

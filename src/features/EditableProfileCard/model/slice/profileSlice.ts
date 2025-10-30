@@ -15,7 +15,7 @@ const initialState: EditableProfileSchema = {
 }
 
 export const profileSlice = createSlice({
-    name: 'user',
+    name: 'profile',
     initialState,
     reducers: {
         setReadonly: (state, action: PayloadAction<boolean>) => {
