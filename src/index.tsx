@@ -12,7 +12,6 @@ import { StoreProvider } from 'app/providers/StoreProvider'
 render(
     <BrowserRouter>
         <StoreProvider>
-
             <ErrorBoundary>
                 <ThemeProvider>
                     <App />
