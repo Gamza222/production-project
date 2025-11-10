@@ -21,18 +21,97 @@
       "author": "typicode"
     }
   ],
+  "articles": [
+    {
+      "id": "1",
+      "title": "News",
+      "subtitle": "Что нового в мире",
+      "img": "https://blog.ishosting.com/hubfs/blog/what-is-url/url.png",
+      "views": 100,
+      "createdAt": "26.02.2025",
+      "type": ["IT"],
+      "blocks": [
+        {
+          "blocks": [
+            {
+              "id": "1",
+              "type": "TEXT",
+              "title": "Что такое Event Loop в JavaScript",
+              "paragraphs": [
+                "JavaScript — однопоточный язык, что означает: в каждый момент времени выполняется только одна операция. Но как тогда работают асинхронные функции, такие как setTimeout или fetch?",
+                "Ответ — в механизме под названием Event Loop. Он управляет порядком выполнения кода, взаимодействуя со стеком вызовов и очередью задач.",
+                "Когда движок JavaScript встречает асинхронную операцию, она отправляется в очередь. После того как основной код (стек) завершится, Event Loop проверяет очередь и выполняет следующую задачу."
+              ]
+            },
+            {
+              "id": "2",
+              "type": "CODE",
+              "code": "console.log('Начало');\n\nsetTimeout(() => {\n  console.log('Асинхронная задача');\n}, 0);\n\nconsole.log('Конец');"
+            },
+            {
+              "id": "3",
+              "type": "TEXT",
+              "title": "Разбор примера",
+              "paragraphs": [
+                "При запуске этого кода вы увидите в консоли порядок вывода:",
+                "Начало → Конец → Асинхронная задача.",
+                "Хотя таймер установлен на 0 миллисекунд, его выполнение всё равно откладывается до тех пор, пока стек не освободится. Это и есть работа Event Loop — он следит, чтобы код выполнялся последовательно и без блокировок."
+              ]
+            },
+            {
+              "id": "4",
+              "type": "IMAGE",
+              "src": "https://upload.wikimedia.org/wikipedia/commons/4/4b/EventLoop.png",
+              "title": "Схема работы Event Loop"
+            },
+            {
+              "id": "5",
+              "type": "TEXT",
+              "title": "Итог",
+              "paragraphs": [
+                "Event Loop — ключевой механизм, благодаря которому JavaScript остаётся быстрым и отзывчивым даже при выполнении асинхронных операций.",
+                "Понимание этого принципа помогает лучше работать с промисами, async/await и оптимизировать структуру кода."
+              ]
+            }
+          ]
+        }
+        
+      ],
+      "updatedAt": "2021-01-01"
+    }
+  ],
   "comments": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "text": "some comment",
+      "postId": 1,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "text": "some comment 2",
+      "postId": 1,
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "text": "some comment 3",
+      "postId": 1,
+      "userId": 2
     }
   ],
   "users": [
     {
       "id": 1,
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "roles": "ADMIN"
+    },
+    {
+      "id": 2,
+      "username": "user",
+      "password": "123",
+      "roles": "USER"
     }
   ],
   "profile": {

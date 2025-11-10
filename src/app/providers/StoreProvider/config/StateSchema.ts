@@ -5,11 +5,13 @@
 // eslint-disable-next-line max-len
 import { type ReducersMapObject, type EnhancedStore, type AnyAction, type Reducer, type CombinedState } from '@reduxjs/toolkit'
 import { type AxiosInstance } from 'axios'
+import { type NavigateOptions, type To } from 'react-router-dom'
+
 import { type CounterSchema } from 'entities/Counter'
 import { type EditableProfileSchema } from 'features/EditableProfileCard'
 import { type UserScema } from 'entities/User'
 import { type LoginSchema } from 'features/AuthByUsername'
-import { type NavigateOptions, type To } from 'react-router-dom'
+import { type ArticleDetailsSchema } from 'entities/Article/model/types/articleDetailsSchema'
 
 export interface StateSchema {
     counter: CounterSchema
@@ -18,6 +20,7 @@ export interface StateSchema {
     // Асихронные редюсеры
     loginForm?: LoginSchema
     profile?: EditableProfileSchema
+    articleDetails?: ArticleDetailsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
